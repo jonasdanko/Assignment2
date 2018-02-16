@@ -78,7 +78,7 @@ public class GameView extends JFrame {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBackground(Color.gray);
-        setSize(700,500);
+        setSize(650,450);
         setVisible(true);
         setResizable(false);
         validate();
@@ -98,19 +98,35 @@ public class GameView extends JFrame {
 
         // ADD YOU CODE HERE
         nbreOfStepsLabel.setText("Number of steps: " + gameModel.getNumberOfSteps());
-        for(int i = 0 ; i< board.length ; ++i){
-            for (int j  = 0 ; j<board[0].length ; ++j){
-                if ( gameModel.isCovered(i, j)==false){
-                    int iconNumber = getIcon(i,j);
-                    System.out.println();
-                    System.out.println(iconNumber);
-                    board[i][j] = new DotButton(j,i,iconNumber);
-                    board[i][j].setIcon(new ImageIcon("Minesweeper_0.png"));
-
+        if(gameModel.getNumberOfSteps()==0){
+            for(int i = 0 ; i< board.length ; ++i) {
+                for (int j = 0; j < board[0].length; ++j) {
+                    board[i][j].setIconNumber(11);
                 }
             }
         }
-        this.repaint();
+        for(int i = 0 ; i< board.length ; ++i){
+            for (int j  = 0 ; j<board[0].length ; ++j){
+                if ( gameModel.isCovered(i, j)==false){
+                    if(gameModel.isMined(i,j)==true){
+                        for(int k = 0 ; k<board.length ; ++k){
+                            for (int l = 0 ; l<board[0].length ; ++l){
+                                if(gameModel.isMined(k,l)){
+                                    board[k][l].setIconNumber(9);
+                                    board[i][j].setIconNumber(10);
+                                }
+                            }
+                        }
+                    }
+                    else{
+                        int iconNumber = getIcon(i,j);
+                        System.out.println();
+                        board[i][j].setIconNumber(iconNumber);
+                    }
+                }
+            }
+        }
+
 
 
 

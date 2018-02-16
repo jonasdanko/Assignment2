@@ -71,12 +71,7 @@ public class DotButton extends JButton {
         this.column = column;
         this.row = row;
         this.iconNumber = iconNumber;
-        if (iconNumber == 11){
-            setIcon(new ImageIcon(getIconFileName()));
-        }
-        else{
-            setIcon(getImageIcon());
-        }
+        setIcon(new ImageIcon(getIconFileName()));
 
 
     }
@@ -95,6 +90,13 @@ public class DotButton extends JButton {
 
         // ADD YOU CODE HERE
         this.iconNumber = iconNumber;
+        if(iconNumber!=11){
+            setIcon(getImageIcon());
+        }
+        else{
+            setIcon(new ImageIcon(getIconFileName()));
+            setDisabledIcon(new ImageIcon(getIconFileName()));
+        }
 
     }
 

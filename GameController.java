@@ -62,9 +62,10 @@ public class GameController implements ActionListener {
             for(int i = 0 ; i<height ; ++i){
                 for (int j =0 ; j<width ; ++j){
                     if (((DotButton) e.getSource()).getRow()==i && ((DotButton) e.getSource()).getColumn()==j){
-                        System.out.print("button pressed: "+ i +" " +  j);
+                        //System.out.print("button pressed: "+ i +" " +  j);
                         play(j, i);
-                        //((DotButton) e.getSource()).setIcon(new ImageIcon("icons/Minesweeper_1"));
+
+                        //((DotButton) e.getSource()).setEnabled(false);
                     }
                 }
             }
@@ -91,6 +92,7 @@ public class GameController implements ActionListener {
         // ADD YOU CODE HERE
         model.reset();
         view.update();
+
         System.out.println(model);
 
     }
