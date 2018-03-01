@@ -95,7 +95,7 @@ public class DotButton extends JButton {
         }
         else{
             setIcon(new ImageIcon(getIconFileName()));
-            setDisabledIcon(new ImageIcon(getIconFileName()));
+
         }
 
     }

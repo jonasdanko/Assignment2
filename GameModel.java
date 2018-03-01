@@ -347,7 +347,17 @@ public class GameModel {
 
         // ADD YOU CODE HERE
         //NEED TO IMPLEMENT
-        return false;
+        boolean finished = true;
+        for (int i = 0 ; i<heigthOfGame ; i++) {
+            for (int j = 0; j < widthOfGame; ++j) {
+                if(! isMined(i,j)){
+                    if(isCovered(i,j)==true){
+                        finished = false;
+                    }
+                }
+            }
+        }
+        return finished;
 
     }
 

@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -97,6 +98,7 @@ public class GameView extends JFrame {
     public void update(){
 
         // ADD YOU CODE HERE
+
         nbreOfStepsLabel.setText("Number of steps: " + gameModel.getNumberOfSteps());
         if(gameModel.getNumberOfSteps()==0){
             for(int i = 0 ; i< board.length ; ++i) {
@@ -109,24 +111,19 @@ public class GameView extends JFrame {
             for (int j  = 0 ; j<board[0].length ; ++j){
                 if ( gameModel.isCovered(i, j)==false){
                     if(gameModel.isMined(i,j)==true){
-                        for(int k = 0 ; k<board.length ; ++k){
-                            for (int l = 0 ; l<board[0].length ; ++l){
-                                if(gameModel.isMined(k,l)){
-                                    board[k][l].setIconNumber(9);
-                                    board[i][j].setIconNumber(10);
-                                }
-                            }
+                        board[i][j].setIconNumber(9);
+                        if (gameModel.hasBeenClicked(i,j)==true){
+                            board[i][j].setIconNumber(10);
+
                         }
                     }
                     else{
                         int iconNumber = getIcon(i,j);
-                        System.out.println();
                         board[i][j].setIconNumber(iconNumber);
                     }
                 }
             }
         }
-
 
 
 
